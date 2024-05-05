@@ -1,0 +1,21 @@
+IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Rotas')
+BEGIN
+    CREATE TABLE dbo.Rotas(
+        Id INT IDENTITY(1,1) NOT NULL,
+        Origem VARCHAR(3) NOT NULL,
+        Destino VARCHAR(3) NOT NULL,
+        Valor DECIMAL(10, 2) NOT NULL,
+        CONSTRAINT PK_Rotas PRIMARY KEY CLUSTERED (Id)
+    );
+END
+
+-- ALTER TABLE dbo.Rotas ADD CONSTRAINT PK_Rotas PRIMARY KEY CLUSTERED (Id);
+
+INSERT INTO dbo.Rotas (Origem, Destino, Valor) VALUES
+('GRU', 'BRC', 10),
+('BRC', 'SCL', 5),
+('GRU', 'CDG', 75),
+('GRU', 'SCL', 20),
+('GRU', 'ORL', 56),
+('ORL', 'CDG', 5),
+('SCL', 'ORL', 20);
